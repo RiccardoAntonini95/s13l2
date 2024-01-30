@@ -14,27 +14,32 @@ namespace s13l2
             Console.Write("Eta': ");
             byte readAge = byte.Parse(Console.ReadLine());
             Persona persona1 = new Persona(readName, readSurname, readAge);
-            Console.WriteLine($"Nome inserito: {persona1.GetNome(readName)}");
-            Console.WriteLine($"Cognome inserito: {persona1.GetCognome(readSurname)}");
-            Console.WriteLine($"Età inserita: {persona1.GetEta(readAge)}");
-            Console.WriteLine(persona1.GetDettagli(readName, readSurname, readAge));
+            Console.WriteLine($"Nome inserito: {persona1.GetNome()}");
+            Console.WriteLine($"Cognome inserito: {persona1.GetCognome()}");
+            Console.WriteLine($"Età inserita: {persona1.GetEta()}");
+            Console.WriteLine(persona1.GetDettagli());
 
 
         }
 
-        public class Persona(string _nome, string _cognome, byte _eta)
-
-        //Properties
+        public class Persona
         {
+            //fields 
+            private string name;
+            private string surname;
+            private byte age;
+
+            //Properties
+
             public string Nome
             {
                 get
                 {
-                    return _nome;
+                    return name;
                 }
                 set
                 {
-                    _nome = value;
+                    name = value;
                 }
             }
 
@@ -42,59 +47,71 @@ namespace s13l2
             {
                 get
                 {
-                    return _cognome;
+                    return surname;
                 }
                 set
                 {
-                    _cognome = value;
+                    surname = value;
                 }
             }
+
             public byte Eta
             {
                 get
                 {
-                    return _eta;
+                    return age;
                 }
-                set { _eta = value; }
+                set
+                {
+                    age = value;
+                }
             }
+
             //Methods
-            public string GetNome(string _nome)
+            public string GetNome()
             {
-                if(_nome.Length == 0)
+                if (Nome.Length == 0)
                 {
                     return "Non hai inserito un nome";
                 }
                 else
                 {
-                return _nome.ToUpper();
+                    return Nome.ToUpper();
                 }
             }
 
-            public string GetCognome(string _cognome)
+            public string GetCognome()
             {
-                if(_cognome.Length == 0)
+                if (Cognome.Length == 0)
                 {
                     return "Non hai inserito un cognome";
                 }
                 else
                 {
-                return _cognome.ToUpper();
+                    return Cognome.ToUpper();
                 }
             }
 
-            public byte GetEta(byte _eta)
+            public byte GetEta()
             {
-                return _eta;
+                return Eta;
             }
 
-            public string GetDettagli(string nome, string cognome, byte eta)
+            public string GetDettagli()
             {
-                return $"Nome:{GetNome(nome)} Cognome:{GetCognome(cognome)} Età:{GetEta(eta)}";
+                return $"Nome:{GetNome} Cognome:{GetCognome} Età:{GetEta}";
+            }
+
+            //Constructor
+            public Persona(string nome, string cognome, byte eta)
+            {
+                name = nome;
+                surname = cognome;
+                age = eta;
             }
 
 
         }
-
     }
 }
 
