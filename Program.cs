@@ -60,12 +60,26 @@ namespace s13l2
             //Methods
             public string GetNome(string _nome)
             {
-                return _nome;
+                if(_nome.Length == 0)
+                {
+                    return "Non hai inserito un nome";
+                }
+                else
+                {
+                return _nome.ToUpper();
+                }
             }
 
             public string GetCognome(string _cognome)
             {
-                return _cognome;
+                if(_cognome.Length == 0)
+                {
+                    return "Non hai inserito un cognome";
+                }
+                else
+                {
+                return _cognome.ToUpper();
+                }
             }
 
             public byte GetEta(byte _eta)
